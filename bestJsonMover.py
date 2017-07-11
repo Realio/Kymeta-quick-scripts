@@ -1,7 +1,7 @@
 '''
 Created on Jul 10, 2017
 
-@author: kau,jwilcox
+@authors: kau,jwilcox
 '''
 
 import os
