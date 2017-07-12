@@ -16,7 +16,7 @@ json_list = []
 Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
 my_values = askopenfilename(initialdir = "Desktop", title = "Please choose your text file that contains the BEST serial numbers")
 my_path = askdirectory(initialdir =  "K:\Public\Engineering\LabData\Ku Radial\Test Data\Ku 70cm\mTennaU7 (5.1 TFT)", title = "Please choose the directory where the optimized Jsons reside")
-my_destination = askdirectory(initialdir =  my_path, title = "Where do you want the chosen BEST Jsons to go?")
+my_destination = askdirectory(initialdir =  my_path, title = "Where do you want the chosen BEST Jsons to go?") #start at previous choice of folder location
 print "Here is where you are getting your best serial numbers from:" + (my_values)
 print "Here is which files you are choosing from:" + (my_path)
 print "Here is where you are writing the files to:" + (my_destination)
