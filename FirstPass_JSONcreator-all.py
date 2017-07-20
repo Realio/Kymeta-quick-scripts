@@ -1,9 +1,10 @@
-# -*- coding: utf-8 -*-
-"""
+'''
 Created on Fri Oct 07 10:32:46 2016
 
-@author: aguenterberg
-"""
+@author: aguenterberg,jwilcox
+'''
+
+#This script builds off the BEST JSON list created from bestJSONcreator.py
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -26,7 +27,7 @@ def wjson(data,fpath):
 ## Grab all jsons in directory
 ## For each json generate scan roll off measurement
 
-def get_file(prompt='Select File',*args):
+def get_file(prompt='Select BEST JSONs',*args):   #utilizes the best JSONs created via bestJSONcreator.py
     try:
         app1 = QtGui.QApplication(sys.argv)
         myWidget = QtGui.QWidget() #Generic parent for the file dialog.
@@ -59,7 +60,7 @@ for d_paths in d_path:
 
 
     ffreq = ndatas[bands]['Pattern_FREQ']
-
+#BROADSIDE JSON CREATION ------------------------------------------------
     ups = {'Pattern_THETA':[0]}
     ups['Pattern_LPA'] = [90,0]
     ups['Pattern_PHI'] = [0]
@@ -67,10 +68,11 @@ for d_paths in d_path:
     if ndatas[bands]['Pattern_PatternType']=='TX':
         ups['Pattern_LPA'] = [90,0]
 
+#OFF-BROADSIDE JSON CREATION -------------------------------------------
     if ffreq == 11.8 or ffreq == 14.0:
         ups['Pattern_THETA'] = [0,30,45,60]
         ups['Pattern_PHI'] = [0,45]
-
+#-----------------------------------------------------------------------
     for lpas in ups['Pattern_LPA']:
         for phs in ups['Pattern_PHI']:
             for ths in ups['Pattern_THETA']:
@@ -88,7 +90,7 @@ for d_paths in d_path:
                 fname = 'SN%s_%s_LIN_f=%s_LPA=%s_THETA=%s_PHI=%s.json'%(nows,bnd,freq,lpa,th,ph)
                 ndatas[bands]['Pattern_ConfigFile'] = fname
 
-                datadir = dirpath[0]+'\\First Pass JSONS'+time.strftime("%Y%m%d",time.gmtime())
+                datadir = dirpath[0]+'\\First Pass JSONS'+time.strftime("%Y%m%d",time.gmtime()) #creates folder in BEST with this name+dt
                 datadir = check_dir(datadir)
 
-                wjson(ndatas,datadir+'\\%s'%(fname))
+                wjson(ndatas,datadir+'\\%s'%(fname))    #creates and writes the JSONS for First pass (ALL)

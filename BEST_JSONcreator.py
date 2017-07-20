@@ -1,9 +1,10 @@
-
 '''
 Created on Jul 10, 2017
 
 @authors: kau,jwilcox
 '''
+
+#This script takes in a list of Serial Numbers (obtained from emails) to create the "BEST" JSONs after optimization
 
 import os
 from shutil import copy
